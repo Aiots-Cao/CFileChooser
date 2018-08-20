@@ -3,7 +3,7 @@ package xin.livingwater.app.cfilechooser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CFileChooser extends AppCompatActivity {
+public class TestChooser extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

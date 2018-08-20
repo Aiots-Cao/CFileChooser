@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#5959AB"
+        android:gravity="bottom">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:text="路径："
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <HorizontalScrollView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/pathShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="/"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/pathBack"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/backpath_icon" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/fileChooseListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></ListView>
+
+    <Button
+        android:id="@+id/fileChooseListView_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5959AB"
+        android:text="选   择"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+</LinearLayout>
