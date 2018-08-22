@@ -1,8 +1,10 @@
 package xin.livingwater.app.cfilechooser;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import xin.livingwater.app.cfilechooser.Util.checkPermission;
+
 public class CFileChooser extends AppCompatActivity {
 
     private ListView FileChooseListView;
@@ -41,9 +45,25 @@ public class CFileChooser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_choose);
         hideBar();
+        checkPermission.checkPermission(CFileChooser.this);
         initData();
         initView();
         deal();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            for (int grant : grantResults) {
+                if (grant != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(CFileChooser.this, "您需要同意本权限否则APP无法正常运行！", Toast.LENGTH_SHORT).show();
+                    //   checkPermission.checkPermission(MainActivity.this);
+                    finish();
+                    break;
+                }
+            }
+        }
     }
 
     public void initData() {
@@ -68,7 +88,7 @@ public class CFileChooser extends AppCompatActivity {
                 if (!checkPath.isEmpty()) {
                     Intent intent = new Intent();
                     intent.putExtra("path", checkPath);
-                    setResult(8801, intent);
+                    setResult(CFile.resultCode, intent);
                     finish();
                 } else {
                     Toast.makeText(CFileChooser.this, "您未选择任何文件！", Toast.LENGTH_LONG).show();
@@ -192,18 +212,22 @@ public class CFileChooser extends AppCompatActivity {
     public void getAllFileAndFolder(File path) {
         list.clear();
         views.clear();
-        File[] files = path.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("filePath", files[i].getAbsolutePath());
-            map.put("fileName", files[i].getName());
-            map.put("fileMemory", files[i].length());
-            if (files[i].isDirectory()) {
-                map.put("isFolder", true);
-            } else {
-                map.put("isFolder", false);
+        try {
+            File[] files = path.listFiles();
+            for (int i = 0; i < files.length; i++) {
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("filePath", files[i].getAbsolutePath());
+                map.put("fileName", files[i].getName());
+                map.put("fileMemory", files[i].length());
+                if (files[i].isDirectory()) {
+                    map.put("isFolder", true);
+                } else {
+                    map.put("isFolder", false);
+                }
+                list.add(map);
             }
-            list.add(map);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         //初始化存储View的list
         addViewToList();

@@ -1,1 +1,1 @@
-include ':app', ':cfilechooser'
+include ':app', ':cfilechooser', ':app'

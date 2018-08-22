@@ -1,4 +1,4 @@
-package xin.livingwater.app.cfilechooser;
+package xin.livingwater.app.testactivity;
 
 import org.junit.Test;
 

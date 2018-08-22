@@ -1,4 +1,4 @@
-package xin.livingwater.app.cfilechooser;
+package xin.livingwater.app.testactivity;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("xin.livingwater.app.cfilechooser", appContext.getPackageName());
+        assertEquals("xin.livingwater.app.testactivity", appContext.getPackageName());
     }
 }
