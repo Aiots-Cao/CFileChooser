@@ -40,4 +40,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 ### 效果图：
 ![](http://wx3.sinaimg.cn/mw690/0060lm7Tly1fuk04uv2fkj30u01hcwgs.jpg)
+### 项目GitHub主页：[传送门](https://github.com/livingwaterCao/CFileChooser/) 
+### 项目简书主页：[传送门](https://www.jianshu.com/p/dd30379a8c6e) 
+### 项目CSDN主页：[传送门](https://blog.csdn.net/qq_30936979/article/details/81989776) 
 ### 欢迎大家star！ 以及提出宝贵建议！
